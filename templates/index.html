@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chromaforge — Color Palette Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-mark">◈</span>
+      <span class="logo-text">Chromaforge</span>
+    </div>
+    <p class="tagline">Craft palettes that speak</p>
+  </header>
+
+  <main>
+    <!-- Controls -->
+    <section class="controls-panel">
+      <div class="control-group">
+        <label for="base-color">Base Color</label>
+        <div class="color-input-wrap">
+          <input type="color" id="color-picker" value="#3b82f6" />
+          <input type="text"  id="hex-input" value="#3b82f6" maxlength="7" placeholder="#rrggbb" />
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Harmony</label>
+        <div class="mode-grid" id="mode-grid">
+          <button class="mode-btn active" data-mode="random">✦ Random</button>
+          <button class="mode-btn" data-mode="complementary">Complementary</button>
+          <button class="mode-btn" data-mode="analogous">Analogous</button>
+          <button class="mode-btn" data-mode="triadic">Triadic</button>
+          <button class="mode-btn" data-mode="split-complementary">Split-Comp</button>
+          <button class="mode-btn" data-mode="tetradic">Tetradic</button>
+          <button class="mode-btn" data-mode="monochromatic">Monochromatic</button>
+          <button class="mode-btn" data-mode="shades">Shades</button>
+          <button class="mode-btn" data-mode="pastel">Pastel</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="count-slider">Swatches — <span id="count-label">6</span></label>
+        <input type="range" id="count-slider" min="3" max="12" value="6" />
+      </div>
+
+      <button class="generate-btn" id="generate-btn">
+        <span class="btn-icon">⬡</span>
+        Generate Palette
+      </button>
+    </section>
+
+    <!-- Palette Output -->
+    <section class="palette-section">
+      <div class="palette-meta" id="palette-meta"></div>
+      <div class="palette-strip" id="palette-strip"></div>
+      <div class="swatch-grid" id="swatch-grid"></div>
+
+      <div class="export-bar" id="export-bar" style="display:none">
+        <button class="export-btn" id="copy-css-btn">Copy CSS</button>
+        <button class="export-btn" id="copy-json-btn">Copy JSON</button>
+        <button class="export-btn" id="copy-hex-btn">Copy HEX list</button>
+        <span class="copied-toast" id="toast">✓ Copied!</span>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section class="history-section" id="history-section" style="display:none">
+      <h3 class="history-title">Recent Palettes</h3>
+      <div class="history-grid" id="history-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Chromaforge</span>
+    <span class="sep">·</span>
+    <span>Built with Python + Flask</span>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
